@@ -14,13 +14,13 @@ public class BowlingGame {
         boolean lastRound = false;
         for (int i = 0; i < carray.length ; i++) {
             if (Character.isDigit(carray[i])) {
-                total += Character.getNumericValue(carray[i]);
+                total += valueOf(carray[i]);
                 continue;
             }
             switch (carray[i]) {
                 case '/':
-                    total -= carray[i-1];
-                    total += 10 + carray[i+1];
+                    total -= valueOf(carray[i - 1]);
+                    total += 10 + valueOf(carray[i + 1]);
                     lastRound = i + 2 == carray.length;
                     break;
             }
@@ -29,5 +29,17 @@ public class BowlingGame {
             }
         }
         return total;
+    }
+
+    private int valueOf(char c) {
+        if (Character.isDigit(c)) {
+            return Character.getNumericValue(c);
+        }
+        switch (c) {
+            case '/':
+                return 10;
+            default:
+                return 0;
+        }
     }
 }

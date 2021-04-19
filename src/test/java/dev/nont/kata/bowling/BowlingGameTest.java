@@ -57,4 +57,28 @@ public class BowlingGameTest {
                 .isEqualTo(expect);
     }
 
+    @DisplayName("missing at the end game with spare")
+    @Test
+    public void endgamesparebutmiss() {
+        var result = "1111111111111111111/-";
+        var expect = 28;
+        BowlingGame sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+    }
+
+    @DisplayName("Missing before the last spare")
+    @Test
+    public void missingBeforeLastSpare() {
+        var result = "111111111111111111-/1";
+        var expect = 29;
+        BowlingGame sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+        result = "111111111111111111-/-";
+        expect = 28;
+        sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+    }
 }
