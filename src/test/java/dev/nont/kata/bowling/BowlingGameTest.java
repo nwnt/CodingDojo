@@ -81,4 +81,14 @@ public class BowlingGameTest {
         assertThat(sut.getScore())
                 .isEqualTo(expect);
     }
+
+    @DisplayName("Two spares in a row")
+    @Test
+    public void twoSparesInARow() {
+        var result = "1/1/1111111111111111";
+        var expect = 38;
+        BowlingGame sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+    }
 }

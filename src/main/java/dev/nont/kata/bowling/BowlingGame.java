@@ -10,18 +10,17 @@ public class BowlingGame {
 
     public int getScore() {
         var total = 0;
-        char[] carray = result.toCharArray();
+        char[] scores = result.toCharArray();
         boolean lastRound = false;
-        for (int i = 0; i < carray.length ; i++) {
-            if (Character.isDigit(carray[i])) {
-                total += valueOf(carray[i]);
-                continue;
-            }
-            switch (carray[i]) {
+        for (int i = 0; i < scores.length ; i++) {
+            switch (scores[i]) {
                 case '/':
-                    total -= valueOf(carray[i - 1]);
-                    total += 10 + valueOf(carray[i + 1]);
-                    lastRound = i + 2 == carray.length;
+                    total -= valueOf(scores[i - 1]);
+                    total += 10 + valueOf(scores[i + 1]);
+                    lastRound = i + 2 == scores.length;
+                    break;
+                default:
+                    total += valueOf(scores[i]);
                     break;
             }
             if (lastRound) {
