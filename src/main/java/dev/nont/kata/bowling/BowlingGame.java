@@ -19,6 +19,9 @@ public class BowlingGame {
                     total += 10 + valueOf(scores[i + 1]);
                     lastRound = i + 2 == scores.length;
                     break;
+                case 'X':
+                    total += 10 + valueOf(scores[i + 1]) + valueOf(scores[i + 2]);
+                    break;
                 default:
                     total += valueOf(scores[i]);
                     break;
@@ -33,6 +36,7 @@ public class BowlingGame {
     private int valueOf(char c) {
         switch (c) {
             case '/':
+            case 'X':
                 return 10;
             case '-':
                 return 0;

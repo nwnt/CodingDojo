@@ -91,4 +91,29 @@ public class BowlingGameTest {
         assertThat(sut.getScore())
                 .isEqualTo(expect);
     }
+
+    @DisplayName("Strike at the beginning")
+    @Test
+    public void strikeAtFirstSight() {
+        var result = "X111111111111111111";
+        var expect = 30;
+        BowlingGame sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+    }
+
+    @DisplayName("Two and three strikes in a row")
+    @Test
+    public void twoAndThreeStrikesInARow() {
+        var result = "XX1111111111111111";
+        var expect = 49;
+        BowlingGame sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+        result = "XXX11111111111111";
+        expect = 77;
+        sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+    }
 }
