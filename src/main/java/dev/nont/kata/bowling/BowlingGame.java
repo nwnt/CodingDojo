@@ -15,11 +15,16 @@ public class BowlingGame {
         for (int i = 0; i < scores.length ; i++) {
             switch (scores[i]) {
                 case '/':
+                    lastRound = i + 2 == scores.length;
                     total -= valueOf(scores[i - 1]);
                     total += 10 + valueOf(scores[i + 1]);
-                    lastRound = i + 2 == scores.length;
                     break;
                 case 'X':
+                    lastRound = i + 3 == scores.length;
+                    if (scores[i + 2] == '/') {
+                        total += 10 + valueOf(scores[i + 2]);
+                        break;
+                    }
                     total += 10 + valueOf(scores[i + 1]) + valueOf(scores[i + 2]);
                     break;
                 default:

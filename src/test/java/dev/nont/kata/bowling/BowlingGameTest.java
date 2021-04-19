@@ -115,5 +115,95 @@ public class BowlingGameTest {
         sut = new BowlingGame(result);
         assertThat(sut.getScore())
                 .isEqualTo(expect);
+        result = "11XXX111111111111";
+        expect = 77;
+        sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+    }
+
+    @DisplayName("A strike then spare")
+    @Test
+    public void strikeAndThenSpare() {
+        var result = "1111X1/111111111111";
+        var expect = 47;
+        BowlingGame sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+        result = "11XX-/111111111111";
+        expect = 65;
+        sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+    }
+
+    @DisplayName("A strike at the end")
+    @Test
+    public void strikeAtTheEnd() {
+        var result = "111111111111111111X35";
+        var expect = 36;
+        BowlingGame sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+    }
+
+    @DisplayName("A strike at the end and a spare")
+    @Test
+    public void strikeAtTheEndWithASpare() {
+        var result = "111111111111111111X9/";
+        var expect = 38;
+        BowlingGame sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+    }
+
+    @DisplayName("A strike at the end and a strike")
+    @Test
+    public void twoStrikesAtTheEnd() {
+        var result = "111111111111111111XX5";
+        var expect = 43;
+        BowlingGame sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+    }
+
+    @DisplayName("Triple strikes at the end")
+    @Test
+    public void tripleStrikesAtTheEnd() {
+        var result = "111111111111111111XXX";
+        var expect = 48;
+        BowlingGame sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+    }
+
+    @DisplayName("Perfect Game")
+    @Test
+    public void perfectGame() {
+        var result = "XXXXXXXXXXXX";
+        var expect = 300;
+        BowlingGame sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+    }
+
+    @DisplayName("Spare every round")
+    @Test
+    public void allSpares() {
+        var result = "5/5/5/5/5/5/5/5/5/5/5";
+        var expect = 150;
+        BowlingGame sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+    }
+
+    @DisplayName("Noob")
+    @Test
+    public void noob() {
+        var result = "--------------------";
+        var expect = 0;
+        BowlingGame sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
     }
 }
