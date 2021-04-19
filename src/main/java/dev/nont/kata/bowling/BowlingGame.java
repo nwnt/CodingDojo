@@ -31,14 +31,13 @@ public class BowlingGame {
     }
 
     private int valueOf(char c) {
-        if (Character.isDigit(c)) {
-            return Character.getNumericValue(c);
-        }
         switch (c) {
             case '/':
                 return 10;
-            default:
+            case '-':
                 return 0;
+            default:
+                return Character.getNumericValue(c);
         }
     }
 }
