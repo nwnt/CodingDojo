@@ -27,13 +27,34 @@ public class BowlingGameTest {
                 .isEqualTo(expect);
     }
 
-    @DisplayName("A spare in mid game")
+    @DisplayName("A spare at the beginning")
     @Test
-    public void aSpareMidGame() {
+    public void spareAtTheBeggining() {
         var result = "9/111111111111111111";
         var expect = 29;
         BowlingGame sut = new BowlingGame(result);
         assertThat(sut.getScore())
                 .isEqualTo(expect);
     }
+
+    @DisplayName("Mid game spare")
+    @Test
+    public void midGameSpare() {
+        var result = "119/1111111111111111";
+        var expect = 29;
+        BowlingGame sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+    }
+
+    @DisplayName("End game spare")
+    @Test
+    public void endGameSpare() {
+        var result = "1111111111111111111/9";
+        var expect = 37;
+        BowlingGame sut = new BowlingGame(result);
+        assertThat(sut.getScore())
+                .isEqualTo(expect);
+    }
+
 }

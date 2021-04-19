@@ -11,7 +11,8 @@ public class BowlingGame {
     public int getScore() {
         var total = 0;
         char[] carray = result.toCharArray();
-        for (int i = 0; i < carray.length; i++) {
+        boolean lastRound = false;
+        for (int i = 0; i < carray.length ; i++) {
             if (Character.isDigit(carray[i])) {
                 total += Character.getNumericValue(carray[i]);
                 continue;
@@ -20,7 +21,11 @@ public class BowlingGame {
                 case '/':
                     total -= carray[i-1];
                     total += 10 + carray[i+1];
+                    lastRound = i + 2 == carray.length;
                     break;
+            }
+            if (lastRound) {
+                break;
             }
         }
         return total;
