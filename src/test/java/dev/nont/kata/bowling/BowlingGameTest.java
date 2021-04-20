@@ -33,7 +33,8 @@ public class BowlingGameTest {
         var result = "9/111111111111111111";
         var expect = 29;
         BowlingGame sut = new BowlingGame(result);
-        assertThat(sut.getScore())
+        int score = sut.getScore();
+        assertThat(score)
                 .isEqualTo(expect);
     }
 
